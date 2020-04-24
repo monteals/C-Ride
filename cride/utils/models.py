@@ -10,3 +10,8 @@ class CRideModel(models.Model):
         get_latest_by = 'created'
         ordering = ['-created', '-modified']
     
+class Student(CRideModel):
+    name = models.Charfield()
+
+    class Meta(CRideModel.META):
+        db_table = 'student_role'
