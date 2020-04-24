@@ -10,8 +10,18 @@ class CRideModel(models.Model):
         get_latest_by = 'created'
         ordering = ['-created', '-modified']
     
-class Student(CRideModel):
-    name = models.Charfield()
+class Person(CRideModel):
+    first_name = models.CharField()
+    last_name = models.CharField()
 
-    class Meta(CRideModel.META):
-        db_table = 'student_role'
+class MyPerson(Person):
+    class Meta:
+        proxy = True
+    
+    def say_hi(self, name):
+        pass
+
+MyPerson.objects.all()
+ricardo = MyPerson.objects.get(pk=1)
+ricardo.say_hi('Pablo')
+
