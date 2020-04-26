@@ -2,7 +2,7 @@ from django.db import models
 from cride.utils.models import CRideModel
 
 class Profile(CRideModel):
-    users = models.OneToOneField('users.User', on_delete=models.CASCADE)
+    user = models.OneToOneField('users.User', on_delete=models.CASCADE)
     picture = models.ImageField('picture', upload_to='user/pictures/', blank=True, null=True)
     biography = models.TextField(max_length=500, blank=True)
 
